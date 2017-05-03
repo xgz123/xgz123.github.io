@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>XGZ123博客</title>
+  <title>使用 require.resolve() 来计算 Node.js 相对于模块的文件路径 | XGZ123博客</title>
 
   
   <meta name="author" content="XGZ">
@@ -14,12 +14,15 @@
   
 
   
+  
+  <meta name="keywords" content="">
+  
 
   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  
+  <meta property="og:title" content="使用 require.resolve() 来计算 Node.js 相对于模块的文件路径"/>
 
   <meta property="og:site_name" content="XGZ123博客"/>
 
@@ -56,12 +59,11 @@
 </header>
 
     <main class="site-main posts-loop">
-    
-  <article>
+    <article>
 
   
     
-    <h3 class="article-title"><a href="/2017/05/03/using-resolve-to-calculate-module-relative-file-paths/"><span>使用 require.resolve() 来计算 Node.js 相对于模块的文件路径</span></a></h3>
+    <h3 class="article-title"><span>使用 require.resolve() 来计算 Node.js 相对于模块的文件路径</span></h3>
     
   
 
@@ -118,91 +120,38 @@
     </div>
 
     
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/05/03/using-resolve-to-calculate-module-relative-file-paths/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
   </div>
 </article>
 
-
-
-  <article>
-
   
-    
-    <h3 class="article-title"><a href="/2016/11/26/简化事件监听函数写法/"><span>简化事件监听函数写法</span></a></h3>
-    
-  
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2016/11/26/简化事件监听函数写法/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-11-26T01:07:19.000Z">
-          2016-11-26
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>相比jQuery或者zepto, 原生js的写法有时太过繁琐。下面是一个简化监听函数的写法的小技巧。</p>
-<p>从简单的开始，比如<code>console.log</code>, 可以写成<code>const log = console.log</code></p>
-<p>用这个思路简化事件监听函数:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> listen = EventTarget.addEventListener</div></pre></td></tr></table></figure>
-<p>这里<code>EventTarget</code>需要修改成目标元素，想到使用<code>call/apply</code>：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">listen.call(targetElement, <span class="string">"click"</span>, event =&gt; &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<blockquote>
-<p><code>call/apply</code>可以用来改变执行时<code>this</code>的指向。</p>
-</blockquote>
-<p>这样还是要每次都写<code>call</code>, 这种简化还是不够理想, 是时候祭出<code>bind</code> – 它可以绑定<code>this</code>:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> listen = <span class="built_in">Function</span>.prototype.call.bind(<span class="built_in">document</span>.addEventListener)</div><div class="line"></div><div class="line">listen(targetElement, <span class="string">"click"</span>, event =&gt; &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>简化至此完成，效果还可以😊。</p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2016/11/26/简化事件监听函数写法/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
+	<script type="text/javascript">
+	var disqus_shortname = 'xgz123';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
 
 
 
 
-<nav class="pagination">
-  
-  
-</nav>
+
     </main>
 
     <footer class="site-footer">
